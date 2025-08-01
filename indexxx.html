@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Senja - Kedai Kopi Modern</title>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #6F4E37; /* Warna kopi */
+            --secondary: #C4A484; /* Warna krem */
+            --dark: #332421;
+            --light: #F5F5F5;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a8188d0-9c09-4680-ba67-5109045303cd.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Menu Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover .menu-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .menu-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark);
+        }
+
+        /* Google Maps */
+        .map-container {
+            margin-top: 3rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        .order-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .order-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background-color: var(--dark);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-img {
+                order: 1;
+            }
+
+            .about-text {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Kopi<span>Senja</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Racikan Kopi Berkualitas</h1>
+            <p>Temukan kenikmatan dalam setiap tegukan kopi kami, dibuat dengan bahan terbaik dan disajikan dengan penuh cinta.</p>
+            <a href="#menu" class="cta-btn">Lihat Menu</a>
+            <a href="https://wa.me/6285263038348" class="cta-btn" style="margin-left: 1rem; background-color: #25D366;">Pesan via WhatsApp (0852-6303-8348)</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="section-title">
+            <h2>Menu Kami</h2>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e1485c74-4e0a-4f3b-858c-ace06cc7738c.png" alt="Espresso panas dalam cangkir kecil dengan crema tebal diatasnya" />
+                </div>
+                <div class="menu-content">
+                    <h3>Espresso</h3>
+                    <p>Ekstrak kopi murni dengan rasa kuat dan crema lembut.</p>
+                    <p class="price">Rp 25.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Espresso%20@Rp25000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Espresso via WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b644de46-7931-459a-a159-6cea1549de46.png" alt="Latte art dengan motif hati di atas kopi berwarna krem" />
+                </div>
+                <div class="menu-content">
+                    <h3>Latte</h3>
+                    <p>Perpaduan espresso dengan susu steamed lembut.</p>
+                    <p class="price">Rp 30.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Latte%20@Rp30000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Latte via WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/03b25908-816b-4a01-94f2-cfab9767b614.png" alt="Cappuccino klasik dalam cangkir putih dengan taburan bubuk coklat" />
+                </div>
+                <div class="menu-content">
+                    <h3>Cappuccino</h3>
+                    <p>Espresso dengan susu steamed dan busa susu tebal.</p>
+                    <p class="price">Rp 28.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Cappuccino%20@Rp28000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Cappuccino via WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ec5a138-a030-42df-825d-b96396ffa099.png" alt="Cold brew kopi disajikan dengan es batu dalam gelas tinggi" />
+                </div>
+                <div class="menu-content">
+                    <h3>Cold Brew</h3>
+                    <p>Ekstrak kopi seduh dingin selama 12 jam dengan rasa halus.</p>
+                    <p class="price">Rp 35.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Cold%20Brew%20@Rp35000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Cold Brew via WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/28012543-5e82-44c7-8ff2-13236f27465b.png" alt="Matcha latte hijau cerah dalam mangkuk teh dengan decoration art" />
+                </div>
+                <div class="menu-content">
+                    <h3>Matcha Latte</h3>
+                    <p>Bubuk matcha premium dengan susu steamed.</p>
+                    <p class="price">Rp 32.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Matcha%20Latte%20@Rp32000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Matcha Latte via WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0b0f8d20-dc4f-4065-acf2-9fd3860de5c6.png" alt="Croissant hangat dengan lapisan mentega renyah di piring kayu" />
+                </div>
+                <div class="menu-content">
+                    <h3>Croissant</h3>
+                    <p>Croissant renyah dengan mentega premium.</p>
+                    <p class="price">Rp 20.000</p>
+                    <a href="https://wa.me/6285263038348?text=Saya%20ingin%20memesan%201%20Croissant%20@Rp20000" class="order-btn" style="display: block; width: 100%; text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                        💬 Pesan Croissant via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-img">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9b88a342-4fc9-46b0-8620-36e8b8acb407.png" alt="Barista sedang membuat kopi di kedai kopi modern dengan mesin espresso profesional" />
+            </div>
+            <div class="about-text">
+                <h2>Tentang Kopi Senja</h2>
+                <p>Kopi Senja didirikan pada tahun 2018 dengan misi untuk menghadirkan pengalaman kopi terbaik di kota ini. Kami memilih biji kopi terbaik dari berbagai daerah di Indonesia dan mengolahnya dengan teliti untuk mendapatkan rasa yang sempurna.</p>
+                <p>Setiap cangkir kopi kami dibuat dengan penuh dedikasi oleh barista berpengalaman kami yang telah mengikuti pelatihan khusus. Kami percaya bahwa kopi yang baik bukan hanya soal rasa, tapi juga tentang pengalaman dan cerita dibaliknya.</p>
+                <p>Kedai kami dirancang untuk memberikan suasana yang nyaman dan hangat, tempat Anda bisa bersantai sambil menikmati secangkir kopi berkualitas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Kontak & Lokasi</h3>
+                <p><i>📍</i> Perumahan Nusantara Mas, Medan</p>
+                <p><i>🕒</i> Buka Setiap Hari: 08:00 - 22:00</p>
+                <p><i>📞</i> <a href="tel:+6285263038348">0852-6303-8348 (WhatsApp)</a></p>
+                <p><i>✉️</i>muhammadfariz1806@gmail.com</p>
+                
+                <h3 style="margin-top: 2rem;">Tim Kami</h3>
+                <p><strong>Manajer:</strong> fariz</p>
+                <p><strong>Customer Service:</strong> alya</p>
+                <p><strong>Barista Head:</strong> culod</p>
+            </div>
+            <div class="contact-form">
+                <h3>Kirim Pesan</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="No. Telepon">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Google Maps -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.0236487739495!2d98.65694517495356!3d3.583751396431919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131b0195a5a5b%3A0x1a4e5fc6dae5f8d7!2sPerumahan%20Nusantara%20Mas%2C%20Medan%20Denai%2C%20Kota%20Medan%2C%20Sumatera%20Utara!5e0!3m2!1sen!2sid" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--dark); color: white; text-align: center; padding: 2rem; margin-top: 3rem; border-top: 3px solid var(--secondary);">
+        <div class="social-links">
+            <a href="https://wa.me/6285263038348?text=Halo%20Kopi%20Senja,%20saya%20ingin%20memesan%20kopi" target="_blank"><i>📱</i> WhatsApp Order</a>
+            <a href="https://instagram.com"><i>📸</i> Instagram</a>
+            <a href="https://facebook.com"><i>👍</i> Facebook</a>
+        </div>
+        <p>© 2023 Kopi Senja. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu after click
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
